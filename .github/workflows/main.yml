@@ -6,7 +6,9 @@ on:
       - [ "master" ]
     paths-ignore:
       - 'README.md'
-
+env:
+  AWS_REGION: eu-north-1                
+  ECR_REPOSITORY: textsummarizer  
 permissions:
   id-token: write
   contents: read

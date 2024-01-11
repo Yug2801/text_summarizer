@@ -6,6 +6,8 @@ WORKDIR /app
 COPY . /app
 RUN pip install --upgrade pip
 
+RUN apt-get update && \
+    apt-get install -y build-essential python3-dev
 RUN pip install -r requirements.txt
 RUN pip install --upgrade accelerate
 RUN pip uninstall -y transformers accelerate

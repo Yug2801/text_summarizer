@@ -3,12 +3,10 @@ name: workflow
 on:
   push:
     branches:
-      - [ "master" ]
+      - ['master']
     paths-ignore:
       - 'README.md'
-env:
-  AWS_REGION: eu-north-1                
-  ECR_REPOSITORY: textsummarizer  
+
 permissions:
   id-token: write
   contents: read
@@ -88,9 +86,9 @@ jobs:
         run: |
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
          
-      # - name: Stop and remove container if running # uncommit after first push
-      #   run: | # uncommit after first push
-      #    docker ps -q --filter "name=texts" | grep -q . && docker stop texts && docker rm -fv texts # uncommit after first push
+      # - name: Stop and remove container if running
+      #   run: |
+      #    docker ps -q --filter "name=texts" | grep -q . && docker stop texts && docker rm -fv texts
        
       - name: Run Docker Image to serve users
         run: |
